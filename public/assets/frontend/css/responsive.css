@@ -1,0 +1,27 @@
+@media (max-width: 1199px) {
+	.responsive-header {display: block;}
+	.left-sidebar {-webkit-transform: translateX(-100%);transform: translateX(-100%);}
+	.right-side-content{padding: 15px;}
+	.left-sidebar.show {-webkit-transform: translateX(0);transform: translateX(0);}
+	.right-side-content {height: calc(100vh - 80px)}
+	.center-main-content, .center-sidebar { height: calc(100vh - 200px);}
+}
+@media(max-width: 991px) {
+	.center-main-content, .center-sidebar {height: auto}
+	.center-main-content {height: auto;margin-top: 30px;}
+	.pagination {margin-bottom: 15px;}
+	.content-top-header .right-info {text-align: center;}
+	.right-side-content {height: auto;}
+	.create-campaign-bottom {position: relative;margin-top: 20px;}
+}
+@media (max-width: 767px) {
+	span.mobile-full-view{display: block; margin-bottom: 15px;}
+	.support-portal-dropdown:before {display: none;}
+	.support-portal-dropdown {width: 350px;}
+	.information-box .text-end {text-align: left !important;padding-top: 10px;}
+	.send-review-portal-dropdown {width: 250px;}
+	h1, h1.page-title {font-size: 28px; line-height: 38px;}
+	.question-answer-box {overflow: auto;}
+	.question-answer-box-inner-scroll {min-width: 650px;}
+	ul.list li {padding-left: 40px;}
+}
