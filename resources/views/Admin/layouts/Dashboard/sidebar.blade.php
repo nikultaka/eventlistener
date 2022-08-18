@@ -8,7 +8,7 @@
             <div class="logo">
                 <a href="javascript:void(0);">
                     <img src="{{ asset('assets/admin/theme/images/logo.png') }}" width="10%" alt="Pyrium" />
-                    &nbsp;<b>Pyrium</b>
+                    &nbsp;<b>Laravel</b>
                 </a>
             </div>
 
@@ -38,51 +38,10 @@
                     <span class="title">Dashboard</span>
                 </a>
             </li>
-            <li class="<?php echo $routeName == 'admin-manage-users' ? 'active' : ''; ?>">
-                <a href="{{ route('admin-manage-users') }}"> <i class="entypo-users"></i>
-                    <span class="title">User Management</span>
-                </a>
-            </li>
+           
             <li class="<?php echo $routeName == 'admin-role' ? 'active' : ''; ?>">
-                <a href="{{ route('admin-role') }}"> <i class="entypo-layout"></i>
-                    <span class="title">Role Management</span>
-                </a>
-            </li>
-            <li class="<?php echo $routeName == 'admin-role' ? 'active' : ''; ?>">
-                <a href="{{ route('admin-category') }}"> <i class="entypo-menu"></i>
-                    <span class="title">Category</span>
-                </a>
-            </li>
-            <li class="<?php echo $routeName == 'admin-role' ? 'active' : ''; ?>">
-                <a href="{{ route('admin-subcategory') }}"> <i class="entypo-list-add"></i>
-                    <span class="title">Sub Category</span>
-                </a>
-            </li>
-            <!-- <li class="
-            <?php //echo $routeName == 'admin-role' ? 'active' : ''; ?>
-            ">
-                <a href="{{ route('admin-feedwall') }}"> <i class="entypo-home"></i>
-                    <span class="title">Feed Wall</span>
-                </a>
-            </li> -->
-            <li class="<?php echo $routeName == 'admin-role' ? 'active' : ''; ?>">
-                <a href="{{ route('admin-story') }}"> <i class="entypo-feather"></i>
-                    <span class="title">Stories</span>
-                </a>
-            </li>
-            <li class="<?php echo $routeName == 'admin-role' ? 'active' : ''; ?>">
-                <a href="{{ route('admin-industries') }}"> <i class="entypo-chart-pie"></i>
-                    <span class="title">Company</span>
-                </a>
-            </li>
-            <li class="<?php echo $routeName == 'admin-role' ? 'active' : ''; ?>">
-                <a href="{{ route('admin-discover') }}"> <i class="entypo-rocket"></i>
-                    <span class="title">Discover</span>
-                </a>
-            </li>
-            <li class="<?php echo $routeName == 'admin-role' ? 'active' : ''; ?>">
-                <a href="{{ route('admin-communitytopics') }}"> <i class="entypo-book-open"></i>
-                    <span class="title">Community Topics</span>
+                <a href="{{ route('admin-event') }}"> <i class="entypo-rocket"></i>
+                    <span class="title">Event</span>
                 </a>
             </li>
             <li>

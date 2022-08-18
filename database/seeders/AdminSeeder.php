@@ -16,7 +16,7 @@ class AdminSeeder extends Seeder
         DB::table('admins')->insert([
             [
             'role_id' => '1',
-            'name' => "Pyrium's Admin",
+            'name' => "Admin",
             'email' => 'admin@gmail.com',
             'password' => '$2y$10$yB.PAVyVbz5.FT10Jyg0GO8NueTUXJEPd7yVqMkml9qWoFwv8KyUW',
             'status' => '1',
