@@ -5,7 +5,7 @@
 <script src="https://js.pusher.com/beams/1.0/push-notifications-cdn.js"></script>
 <script>
   const beamsClient = new PusherPushNotifications.Client({
-    instanceId: "526a07fe-587f-4002-9db8-62dc54ffb6be",
+    instanceId: '<?php echo env("INSTANCEID");?>',
   });
 
   beamsClient.start()
@@ -18,9 +18,9 @@
     <div class="login-content">
         <a href="{{route('admin-login')}}" class="logo">
             <img src="{{ asset('assets/admin/theme/images/logo.png')}}" width="10%" alt=""/>
-            &nbsp;<b>Pyrium</b>
+            &nbsp;<b>Laravel</b>
         </a>
-        <p class="description">Enter your email address and password to access <b> Pyrium's admin panel. </b></p>
+        <p class="description">Enter your email address and password to access</p>
         <!-- progress bar indicator -->
         <div class="login-progressbar-indicator">
             <h3>43%</h3>

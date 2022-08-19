@@ -4,31 +4,6 @@
 @section('breadcrumbSecond', 'Event')
 @section('adminMainContent')
 
-<?php
-// $pushNotifications = new \Pusher\PushNotifications\PushNotifications(array(
-//   "instanceId" => "526a07fe-587f-4002-9db8-62dc54ffb6be",
-//   "secretKey" => "DD6AF1EC0570578CADC2CC05FE7B61C0FEE131B4CE567D128FCB70CF265E4B1E",
-// ));
-// $ch = curl_init();
-
-// curl_setopt($ch, CURLOPT_URL, 'https://526a07fe-587f-4002-9db8-62dc54ffb6be.pushnotifications.pusher.com/publish_api/v1/instances/526a07fe-587f-4002-9db8-62dc54ffb6be/publishes');
-// curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-// curl_setopt($ch, CURLOPT_POST, 1);
-// curl_setopt($ch, CURLOPT_POSTFIELDS, "{\"interests\":[\"hello\"],\"web\":{\"notification\":{\"title\":\"Hello\",\"body\":\"Hello, world!\"}}}");
-
-// $headers = array();
-// $headers[] = 'Content-Type: application/json';
-// $headers[] = 'Authorization: Bearer DD6AF1EC0570578CADC2CC05FE7B61C0FEE131B4CE567D128FCB70CF265E4B1E';
-// curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-
-// $result = curl_exec($ch);
-// if (curl_errno($ch)) {
-//     echo 'Error:' . curl_error($ch);
-// }
-// curl_close($ch);
-
-?>
-
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
@@ -55,7 +30,9 @@
 								<thead>
                                     <tr>
                                         <th>Name</th>
-                                        <th>Time</th>
+                                        <th>Start Time</th>
+                                        <th>End Time</th>
+                                        <th>Timezone</th>
                                         <th>Status</th>
                                         <th style="min-width: 200px">Action</th>
                                     </tr>

@@ -10,6 +10,8 @@ use DataTables;
 use Validator;
 use Carbon\Carbon;
 use Auth;
+use Google_Client;
+use Google_Service_Gmail;
 
 
 class EventController extends Controller
@@ -17,6 +19,22 @@ class EventController extends Controller
     //
     function index()
     {
+        // $client = new Google_Client();
+        // $client->setApplicationName("My Application");
+        // $client->setAccessType('offline');
+        // $client->setClientId('32064120301-lo28896hf44i2r6ml43mug3tdp2l8gtc.apps.googleusercontent.com');
+        // $client->setClientSecret('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');
+        // //$client->setRedirectUri('https://palladiumhub.com');
+        // $client->addScope("https://www.googleapis.com/auth/calendar.readonly");
+        // $accessToken = 'ya29.A0AVA9y1vg5eAhRnbYZnQXuFBuTTbqc_qTBN6X9vpm1n51p518dUxQliQ02ry6ue4IhrB-sdgxQX4ZYJTDkZfNhNptPIK9f-sT3dhEvNGZcTjP9vbVRbx4MLktM-1dBzsX5tTlfwAJMSGXkOtiB-twlZMDxgBBaCgYKATASATASFQE65dr8LHh2eAkh_PNIFu0u69So_w0163';
+        // $client->setAccessToken($accessToken);
+        //   if ($client->isAccessTokenExpired()) {
+        //     $client->refreshToken($accessToken);
+        //   }
+          //$access_token = $client->getAccessToken();
+          //$tokens_decoded = json_decode($access_token);
+          //$refreshToken = $tokens_decoded->refresh_token;
+        // die;
         return view('Admin/event/index');
     }
 
@@ -90,8 +108,8 @@ class EventController extends Controller
     {
         if ($request->ajax()) {
 
-          $calenderId  = 'nikulpanchal0011@gmail.com';
-          $apiKey      = 'AIzaSyCcLTTDtC2wPIXLiRT62igEOvD8_xVhzmw';
+          $calenderId  = env("CALENDERID");
+          $apiKey      = env("APIKEY");
 
 
           // $data = array("application_name" => "Application1");
@@ -125,25 +143,56 @@ class EventController extends Controller
                 //     }
                 //     return $status;
                 // })
-                ->addColumn('time', function ($row) {
-                   $time = $row['created'];
-                   $newDate = date('d-m-Y', strtotime($time));
-                   return $newDate;
+                ->addColumn('starttime', function ($row) {
+                    if(isset($row['start']['dateTime'])) {
+                        $time = $row['start']['dateTime'];
+                       $newDate = date('m-d-Y H:i:s', strtotime($time));
+                       return $newDate;     
+                    } else {
+                        return '';     
+                    }
+                })
+                ->addColumn('endtime', function ($row) {
+                    if(isset($row['end']['dateTime'])) {
+                        $time = $row['end']['dateTime'];
+                       $newDate = date('m-d-Y  H:i:s', strtotime($time));
+                       return $newDate;     
+                    } else {
+                        return '';     
+                    }
+                })
+                ->addColumn('timezone', function ($row) {
+                    if(isset($row['end']['timeZone'])) {
+                       $timezone = $row['end']['timeZone'];
+                       return $timezone;     
+                    } else {
+                        return '';     
+                    }
+                })
+                ->addColumn('status', function ($row) {
+                    if(isset($row['status'])) {
+                       return $row['status'];
+                    } else {
+                        return '';     
+                    }
                 })
 
                 ->addColumn('action', function ($row) use($calenderId) {
                     // echo "<pre>";
-                    // print_r($calenderId);
+                    // print_r($row);
                     // die;
+
+                    // $eid = 'XzYwcTMwYzFnNjBvMzBlMWk2MG80YWMxZzYwcmo4Z3BsODhyajJjMWg4NHMzNGg5ZzYwczMwYzFnNjBvMzBjMWc2MTEzMmUyNThrbzMwaGE2NnQxazhlMWc2NG8zMGMxZzYwbzMwYzFnNjBvMzBjMWc2MG8zMmMxZzYwbzMwYzFnNjhyajhjMW42Z3AzYWVhMzZ0MGs0YzlrNmtzNDhnOW82b3NqMGNpNTY4cTM2Y3BoOGtyZyBuaWt1bHBhbmNoYWwwMDExQG0';
                  
-                    $action = '<button class="btn btn-danger btn-sm btn-icon icon-left" onclick="delete_discover(' . $row['id'] . ')"><i class="entypo-cancel"></i> Delete</button>&nbsp;';
-                    $action .= '<button class="btn btn-info btn-sm btn-icon icon-left" onclick="edit_discover(' . $row['id'] . ')"><i class="entypo-pencil"></i> Edit</button>';
+                    $action = '<button class="btn btn-danger btn-sm btn-icon icon-left deletbtn" 
+                    data-id="'.$row['id'].'"  data-cid="'.$calenderId.'"><i class="entypo-cancel"></i> Delete</button>&nbsp;';
+                    // $action .= '<button class="btn btn-info btn-sm btn-icon icon-left" onclick="edit_discover(' . $row['id'] . ')"><i class="entypo-pencil"></i> Edit</button>';
                     // $btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View</a>'
                     return $action;
                 })
 
                 // ->rawColumns(['action', 'is_featured', 'status'])
-                ->rawColumns(['time','action'])
+                ->rawColumns(['starttime','endtime','timezone','status','action'])
 
                 ->make(true);
         }

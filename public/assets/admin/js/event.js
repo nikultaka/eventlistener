@@ -3,6 +3,19 @@ $(document).ready(function () {
     $("#discoverModelBtn").click(function () {
         $("#discoverModal").modal("show");
     });
+// $(".deletbtn").click(function() {
+//     alert('ji')
+//     // $(this).data("id")
+//    // var myClass = $(this).attr("data-id");
+//    // alert(myClass);
+// });
+// $(".deletbtn").on('click', function(event){
+//     alert('ji')
+//     event.stopPropagation();
+//     event.stopImmediatePropagation();
+//     //(... rest of your JS code)
+// });
+
 
     $("#discoverModal").on("hidden.bs.modal", function () {
         $("#Discoverform")[0].reset();
@@ -85,7 +98,9 @@ function readDiscoverData() {
         },
         columns: [
             { data: "summary", name: "name" },
-            { data: "time", name: "time" },
+            { data: "starttime", name: "starttime" },
+            { data: "endtime", name: "endtime" },
+            { data: "timezone", name: "timezone" },
             // { data: 'description', name: 'description' },
             // { data: "category_name", name: "category_name" },
             // { data: "type_of_card", name: "type_of_card" },
@@ -101,9 +116,8 @@ function readDiscoverData() {
     });
 }
 
-function delete_discover(e) {
-    alert(e);
-    return false;
+function delete_discover(eventId,calendarId) {
+   
     Swal.fire({
         title: "Are you sure?",
         text: "You won't be able to revert this!",
@@ -118,22 +132,29 @@ function delete_discover(e) {
             $.ajax({
                 // url: BASE_URL + "/" + ADMIN + "/discover/delete",
                 // type: "POST",
-                url: 'https://www.googleapis.com/calendar/v3/calendars/calendarId/events/'+ eventId,
+                url: 'https://www.googleapis.com/calendar/v3/calendars/'+calendarId+'/events/'+ eventId,
                 type: "DELETE",
+
+                 headers: {"Authorization": "Bearer ya29.A0AVA9y1vg5eAhRnbYZnQXuFBuTTbqc_qTBN6X9vpm1n51p518dUxQliQ02ry6ue4IhrB-sdgxQX4ZYJTDkZfNhNptPIK9f-sT3dhEvNGZcTjP9vbVRbx4MLktM-1dBzsX5tTlfwAJMSGXkOtiB-twlZMDxgBBaCgYKATASATASFQE65dr8LHh2eAkh_PNIFu0u69So_w0163"},
+                 // Authorization: Basic YWxhZGRpbjpvcGVuc2VzYW1l
+// 
+
                 // data: {
                 //     id: id,
                 //     _token: $("[name='_token']").val(),
                 // },
                 success: function (response) {
-                    var data = JSON.parse(response);
-                    if (data.status == 1) {
-                        successMsg(data.msg);
-                        readDiscoverData();
+                    console.log(response)
+                    // var data = JSON.parse(response);
+                    // if (data.status == 1) {
+                    //     successMsg(data.msg);
+                    //     readDiscoverData();
                         hideloader();
-                    } else {
-                        errorMsg(data.msg);
-                        hideloader();
-                    }
+                        document.location.reload();
+                    // } else {
+                    //     errorMsg(data.msg);
+                    //     hideloader();
+                    // }
                 },
             });
         }
@@ -183,6 +204,17 @@ function edit_discover(id) {
         },
     });
 }
+
+$(document).on('click', '.deletbtn',  function () {
+    
+    const eventId = $(this).data("id");
+    const calendarId = $(this).data("cid");
+
+    delete_discover(eventId,calendarId)
+  
+});
+
+
 
 function getSubCategoryData(id, subid = null) {
     $.ajax({
