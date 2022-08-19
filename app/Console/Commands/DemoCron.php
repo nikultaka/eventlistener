@@ -69,7 +69,10 @@ class DemoCron extends Command
                     $minutes = $since_start->days * 24 * 60;
                     $minutes += $since_start->h * 60;
                     $minutes += $since_start->i;
-                    if($minutes <= 5) {
+
+                    //echo $minutes; 
+                    //echo  '<br>';
+                    if($minutes <= 5 && $utctime<=$starttime) {
                         $pushNotifications = new \Pusher\PushNotifications\PushNotifications(array(
                             "instanceId" => env("INSTANCEID"),
                             "secretKey" => env("SECRETKEY")
