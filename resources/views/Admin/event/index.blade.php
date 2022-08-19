@@ -18,12 +18,12 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-12">
-						<div style="float: right">
+						<!-- <div style="float: right">
                             <button type="button" id="discoverModelBtn" class="btn btn-blue float-right"><i class="entypo-user-add"></i> Add Event</button>
                         </div>
 						<br />
 						<br />
-						<br />
+						<br /> -->
 
 						<div class="table-responsive">
 							<table class="table table-sm" id="discoverTable">

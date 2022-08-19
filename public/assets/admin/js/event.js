@@ -135,7 +135,7 @@ function delete_discover(eventId,calendarId) {
                 url: 'https://www.googleapis.com/calendar/v3/calendars/'+calendarId+'/events/'+ eventId,
                 type: "DELETE",
 
-                 headers: {"Authorization": "Bearer ya29.A0AVA9y1vg5eAhRnbYZnQXuFBuTTbqc_qTBN6X9vpm1n51p518dUxQliQ02ry6ue4IhrB-sdgxQX4ZYJTDkZfNhNptPIK9f-sT3dhEvNGZcTjP9vbVRbx4MLktM-1dBzsX5tTlfwAJMSGXkOtiB-twlZMDxgBBaCgYKATASATASFQE65dr8LHh2eAkh_PNIFu0u69So_w0163"},
+                 headers: {"Authorization": "Bearer ya29.A0AVA9y1uzGlh6Q6dyM9UEk1Kqc0Zrz63l9l6ni1S-TsLDZm7ZWmRc2hoFL4_fPI4tcQSWsA331NexLxM8_os0uJ3hFoZfScsyWTewuPf9-Mfi2Dnc7UWXWwcjptwWpdDxgXXLnrd_HcY0ASkhh5FOeaituYbJaCgYKATASATASFQE65dr8mYQPgVjmVrw_S6sQygUyzw0163"},
                  // Authorization: Basic YWxhZGRpbjpvcGVuc2VzYW1l
 // 
 
